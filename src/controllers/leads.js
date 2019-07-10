@@ -2,6 +2,7 @@ import * as $ from 'jquery'
 import duplicate from '../components/duplicate'
 import costPrice from '../components/cost-price'
 import createLeadFolders from '../components/create-lead-folders'
+import Mail from '../components/mail'
 
 export default {
     constriclor() {
@@ -32,6 +33,9 @@ export default {
         
         // ДУБЛИ!
         duplicate()
+
+        // Почта
+        window.Mail = Mail
 
     }
 }
