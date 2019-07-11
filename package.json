@@ -37,6 +37,9 @@
     "@ckeditor/ckeditor5-build-classic": "^12.3.0",
     "@ckeditor/ckeditor5-build-decoupled-document": "^12.3.0",
     "amocrm-js": "^1.0.15",
-    "page": "^1.11.4"
+    "ckeditor": "^4.12.1",
+    "froala-editor": "^3.0.2",
+    "page": "^1.11.4",
+    "trumbowyg": "^2.18.0"
   }
 }

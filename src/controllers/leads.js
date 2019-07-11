@@ -6,16 +6,17 @@ import Mail from '../components/mail'
 
 export default {
     constriclor() {
-        $('.pipeline_leads__tag[data-id="299589"]').addClass('i4j5-duplicate')
+        // $('.pipeline_leads__tag[data-id="299589"]').addClass('i4j5-duplicate')
         
-        $('.multisuggest__list-item.js-multisuggest-item[data-id="299589"]').addClass('i4j5-duplicate-btn').click(function() {
-            $('input.control-phone__formatted').each(function(i, elem) {
-                var phone = elem.value
-                if (phone) {
-                    window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
-                }
-            })
-        })
+        // $('.multisuggest__list-item.js-multisuggest-item[data-id="299589"]').addClass('i4j5-duplicate-btn').click(function() {
+        //     $('input.control-phone__formatted').each(function(i, elem) {
+        //         var phone = elem.value
+        //         if (phone) {
+        //             window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
+        //         }
+        //     })
+        // })
+        duplicate()
     },
 
     pipeline() {
@@ -32,7 +33,7 @@ export default {
         costPrice()
         
         // ДУБЛИ!
-        duplicate()
+        
 
         // Почта
         window.Mail = Mail

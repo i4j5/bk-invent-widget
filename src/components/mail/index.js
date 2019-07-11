@@ -2,17 +2,33 @@ import * as $ from 'jquery'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import '@ckeditor/ckeditor5-build-classic/build/translations/ru.js'
 
+// import 'trumbowyg'
+// import 'trumbowyg/dist/langs/ru.js'
+// import 'trumbowyg/dist/ui/trumbowyg.css'
+
+// import FroalaEditor from 'froala-editor'
+
+// import CKEDITOR from 'ckeditor'
+// import 'ckeditor/lang/runEditor.js'
+
+
 
 let runEditor = (selector, cb) => {
     ClassicEditor
         .create(document.querySelector('#control-wysiwyg__area'), {
             language: 'ru',
-            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'textColor', 'bulletedList', 'numberedList', '|', 'undo', 'redo' ],
+            //toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'textColor', 'bulletedList', 'numberedList', '|', 'undo', 'redo' ],
             // table: {
             //     contentToolbar: [ 'tableRow', 'tableColumn', 'mergeTableCells' ],
             //     tableToolbar: [ 'blockQuote' ]
             // },
+            bold: {
+                styles: [
+                    color => '#d00'
+                ]
+            }
         }).then(cb) 
+
 }
 
 const Mail = {
@@ -32,6 +48,7 @@ const Mail = {
     
                 editor.model.document.on('change:data', () => {
                     $massage.val(editor.getData())
+                    CKEDITOR.instances.newDotDescriptionFull.getData()
                 })
     
                 // $mailTemplate.change(() => {
