@@ -20,7 +20,7 @@ export default function duplicate() {
 
         $('.i4j5-duplicate-btn').unbind('click')
         $('.i4j5-duplicate-btn').click(() => {
-            $('input.control-phone__formatted').each(function(i, elem) {
+            $('.card-entity-form input.control-phone__formatted').each(function(i, elem) {
                 var phone = elem.value
                 if (phone) {
                     window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
