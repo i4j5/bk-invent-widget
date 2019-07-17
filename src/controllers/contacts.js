@@ -1,4 +1,3 @@
-import * as $ from 'jquery'
 import duplicate from '../components/duplicate'
 
 export default {
@@ -8,10 +7,6 @@ export default {
 
     list() {
         this.constriclor()  
-
-        // $(document).on('change', '#list_table', function() {
-        //     console.log('))!')
-        // })
     },
 
     detail(id) {

@@ -2,7 +2,17 @@ import * as $ from 'jquery'
 
 export default function duplicate() {
 
-    setInterval(function() {
+    let pathname = document.location.pathname.split('/')
+    pathname = pathname[1] + pathname[2]
+
+    let idSetInterval = setInterval(function() {
+        let pathname2 = document.location.pathname.split('/')
+        pathname2 = pathname2[1] + pathname2[2]
+
+        if(pathname != pathname2) {
+            clearInterval(idSetInterval)
+        }
+
         $('.pipeline_leads__tag[data-id="299589"], .pipeline_leads__tag[data-id="302953"]')
             .addClass('i4j5-duplicate')
         $('.multisuggest__list-item.js-multisuggest-item[data-id="299589"], .multisuggest__list-item.js-multisuggest-item[data-id="302953"]')
@@ -16,6 +26,6 @@ export default function duplicate() {
                     window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
                 }
             })
-        })
-    }, 100)
+        })        
+    }, 500)
 }
