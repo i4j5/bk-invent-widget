@@ -4,6 +4,8 @@ export default function duplicate() {
 
     let pathname = document.location.pathname.split('/')
     pathname = pathname[1] + pathname[2]
+    
+    console.log('Start')
 
     let idSetInterval = setInterval(function() {
         let pathname2 = document.location.pathname.split('/')
@@ -11,6 +13,7 @@ export default function duplicate() {
 
         if(pathname != pathname2) {
             clearInterval(idSetInterval)
+            console.log('Delete')
         }
 
         $('.pipeline_leads__tag[data-id="299589"], .pipeline_leads__tag[data-id="302953"]')
@@ -20,8 +23,9 @@ export default function duplicate() {
 
         $('.i4j5-duplicate-btn').unbind('click')
         $('.i4j5-duplicate-btn').click(() => {
-            $('.card-entity-form input.control-phone__formatted').each(function(i, elem) {
-                var phone = elem.value
+            $('.card-entity-form input.control-phone__formatted, #contacts_list input.control-phone__formatted').each(function(i, elem) {
+                let phone = elem.value
+                console.log(phone)
                 if (phone) {
                     window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
                 }
