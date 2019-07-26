@@ -7,11 +7,13 @@ export default {
         let $todo = $('.todo-line__item')
 
         $todo.each(function(){
-            let $text = $(this).find('.todo-line__item-body .todo-line__item-break-word').html()
+            let $text = $(this).find('.todo-line__item-body').html()
             
             if ($text != undefined) {
                 let inx = $text.indexOf('@');
                 let type = $text[inx+1]
+
+                console.log(inx)
 
                 if (inx > -1) {
                     if (type == 'A'|| type == 'А') {
