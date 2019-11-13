@@ -1,8 +1,6 @@
 import * as $ from 'jquery'
 import * as tmpl from './tmpl.pug'
 
-console.log(widget)
-
 export default function costPrice() {
 
     if (!$('#i4j5-cost-price').html()) {

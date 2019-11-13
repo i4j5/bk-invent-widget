@@ -11,13 +11,12 @@ let instance = null
 
 class Widget {
 
-	constructor(account, system, user, settings) {
+	constructor(settings, self, Modal) {
 
         if (!instance) {
-            this.account = account
-            this.system = system
-            this.user = user
+            this.Modal = Modal
             this.settings = settings
+            this.super = self
             instance = this
         }
         
