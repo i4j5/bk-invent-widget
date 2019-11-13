@@ -3,7 +3,7 @@ import Leads from './controllers/leads.js'
 import Todo from './controllers/todo.js'
 import Comtacts from './controllers/contacts.js'
 
-export default function runRouter(crm, server, user) {
+export default function runRouter() {
 
     // page('*', (ctx, next) => { })
 

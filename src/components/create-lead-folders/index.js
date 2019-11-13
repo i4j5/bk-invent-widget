@@ -1,7 +1,10 @@
 import * as $ from 'jquery'
 import * as tmpl from './tmpl.pug'
+import Widget from '../../widget'
 
 export default function createLeadFolders(id) {
+
+    let widget =  new Widget()
 
     if ($('#i4j5-create-lead-folders').html()) $('#i4j5-create-lead-folders').detach()
 
@@ -16,7 +19,7 @@ export default function createLeadFolders(id) {
             $('body').addClass('page-loading');
             ajax = false
             $.post(
-                '//private.bk-invent.ru/api/webhook/amo/create-lead-folders', 
+                `//${widget.settings.server}/api/webhook/amo/create-lead-folders`, 
                 {
                     id: id
                 }

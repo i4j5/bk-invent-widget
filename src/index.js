@@ -1,16 +1,10 @@
 import './style.sass'
-
-import AmoCRM from 'amocrm-js'
 import runRouter from './routers'
+import Widget from './widget'
 
-window.WidgetI4J5init = function( account, system, user, settings) {
-	const crm = new AmoCRM({
-		domain: system.subdomain,
-		auth: {
-			login: system.amohash,
-			hash: system.amouser,
-		}
-	})
+window.WidgetI4J5init = function(account, system, user, settings) {
 	
-	runRouter(crm, settings.server, user)
+	new Widget(account, system, user, settings);
+
+	runRouter()
 }
