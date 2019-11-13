@@ -1,5 +1,6 @@
 import * as $ from 'jquery'
-import * as tmpl from './btn.pug'
+import * as btnTmpl from './btn.pug'
+import * as modalTmpl from './modal.pug'
 import Widget from '../../widget'
 
 export default function createLeadProject(id) {
@@ -8,7 +9,7 @@ export default function createLeadProject(id) {
 
     if ($('#i4j5-create-lead-project').html()) $('#i4j5-create-lead-project').detach()
 
-    $('.card-holder .button-input-more .button-input__context-menu').prepend(tmpl())
+    $('.card-holder .button-input-more .button-input__context-menu').prepend(btnTmpl())
     
     // let  ajax = true
     //$(document).off('click', '#i4j5-create-lead-project')
@@ -18,7 +19,7 @@ export default function createLeadProject(id) {
             init: function ($modal_body) {
                 $modal_body
                     .trigger('modal:loaded')
-                    .html('<span class="modal-body__close"><span class="icon icon-modal-close">')
+                    .html(modalTmpl())
                     .trigger('modal:centrify')
                     .append('');
             },
