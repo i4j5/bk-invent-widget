@@ -43,13 +43,28 @@ export default function createLeadProject(lead_id) {
                 $('body').addClass('page-loading')
 
                 $.ajax({
-                    url: `//${widget.settings.server}/api/webhook/amo/create-lead-project`,
+                    url: `//${widget.settings.server}/api/webhook/amocrm/create-deal-project`,
                     type: 'post',
                     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                     data: $(this).serialize()
                 }).done(function() {
                     $('body').removeClass('page-loading')
-                    //TODO Вызвать окно !!!
+
+                    let modal_ok = new widget.Modal({
+                        class_name: 'modal-window',
+                        init: function ($modal_body) {
+                            $modal_body
+                                .trigger('modal:loaded')
+                                .html('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span><h1>Проект создан</h1>')
+                                .trigger('modal:centrify')
+                                .append('');
+                        },
+                        destroy: function () {
+                            openModal = true
+                            $(document).off('submit', '#i4j5-create-lead-project__form')
+                        }
+                    })
+
                     ajax = true
                 })
                 .always(function() {

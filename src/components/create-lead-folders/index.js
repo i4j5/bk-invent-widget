@@ -19,13 +19,26 @@ export default function createLeadFolders(id) {
             $('body').addClass('page-loading');
             ajax = false
             $.post(
-                `//${widget.settings.server}/api/webhook/amo/create-lead-folders`, 
+                `//${widget.settings.server}/api/webhook/amocrm/create-deal-folders`, 
                 {
                     id: id
                 }
             ).done(function() {
                 $('body').removeClass('page-loading')
-                //TODO Вызвать окно !!!
+                
+                let modal_ok = new widget.Modal({
+                    class_name: 'modal-window',
+                    init: function ($modal_body) {
+                        $modal_body
+                            .trigger('modal:loaded')
+                            .html('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span><h1>Папки созданы</h1>')
+                            .trigger('modal:centrify')
+                            .append('');
+                    },
+                    destroy: function () {
+                    }
+                })
+
                 ajax = true
             })
         }

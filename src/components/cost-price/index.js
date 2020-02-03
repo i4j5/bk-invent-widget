@@ -4,7 +4,7 @@ import * as tmpl from './tmpl.pug'
 export default function costPrice() {
 
     if (!$('#i4j5-cost-price').html()) {
-        let $costPrice = $('.linked-form__field__value input[name="CFV[234243]"]')
+        let $costPrice = $('.linked-form__field__value input[name="CFV[75197]"]')
         let _val = $costPrice.val()
 
         $costPrice.attr('placeholder','')
