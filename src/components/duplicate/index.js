@@ -15,17 +15,17 @@ export default function duplicate() {
             clearInterval(idSetInterval)
             console.log('Delete')
         }
+        
 
-        $('.pipeline_leads__tag[data-id="299589"], .pipeline_leads__tag[data-id="302953"]')
+        $('.pipeline_leads__tag[data-id="35811"], .pipeline_leads__tag[data-id="35509"]')
             .addClass('i4j5-duplicate')
-        $('.multisuggest__list-item.js-multisuggest-item[data-id="299589"], .multisuggest__list-item.js-multisuggest-item[data-id="302953"]')
+        $('.multisuggest__list-item.js-multisuggest-item[data-id="35811"], .multisuggest__list-item.js-multisuggest-item[data-id="35509"]')
             .addClass('i4j5-duplicate-btn')
 
         $('.i4j5-duplicate-btn').unbind('click')
         $('.i4j5-duplicate-btn').click(() => {
             $('.card-entity-form input.control-phone__formatted, #contacts_list input.control-phone__formatted').each(function(i, elem) {
                 let phone = elem.value
-                console.log(phone)
                 if (phone) {
                     window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
                 }

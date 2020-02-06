@@ -9,7 +9,7 @@ export default function createLeadProject(lead_id) {
 
     if ($('#i4j5-create-lead-project').html()) $('#i4j5-create-lead-project').detach()
 
-    $('.card-holder .button-input-more .button-input__context-menu').prepend(btnTmpl())
+    $('.card-holder .card-fields__top-name-more .button-input-more .button-input__context-menu').prepend(btnTmpl())
     
     let openModal = true
     $(document).off('click', '#i4j5-create-lead-project')

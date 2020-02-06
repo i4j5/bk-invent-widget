@@ -2,7 +2,7 @@ import duplicate from '../components/duplicate'
 
 export default {
     constriclor() {
-        //duplicate()
+        duplicate()
     },
 
     list() {

@@ -21,6 +21,10 @@ export default {
                     } 
 
                     if (type == 'С'|| type == 'C') {
+                        $(this).addClass('i4j5-todo_type_b')
+                    }
+
+                    if (type == 'С'|| type == 'C') {
                         $(this).addClass('i4j5-todo_type_c')
                     } 
                 }

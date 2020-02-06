@@ -8,7 +8,7 @@ export default function createLeadFolders(id) {
 
     if ($('#i4j5-create-lead-folders').html()) $('#i4j5-create-lead-folders').detach()
 
-    $('.card-holder .button-input-more .button-input__context-menu').prepend(tmpl())
+    $('.card-holder .card-fields__top-name-more .button-input-more .button-input__context-menu').prepend(tmpl())
     
     let  ajax = true
     $(document).off('click', '#i4j5-create-lead-folders')
