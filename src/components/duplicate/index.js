@@ -4,8 +4,6 @@ export default function duplicate() {
 
     let pathname = document.location.pathname.split('/')
     pathname = pathname[1] + pathname[2]
-    
-    console.log('Start')
 
     let idSetInterval = setInterval(function() {
         let pathname2 = document.location.pathname.split('/')
@@ -13,9 +11,7 @@ export default function duplicate() {
 
         if(pathname != pathname2) {
             clearInterval(idSetInterval)
-            console.log('Delete')
         }
-        
 
         $('.pipeline_leads__tag[data-id="35811"], .pipeline_leads__tag[data-id="35509"]')
             .addClass('i4j5-duplicate')
