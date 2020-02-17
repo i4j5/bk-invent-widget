@@ -1,6 +1,7 @@
 import * as $ from 'jquery'
 import * as btnTmpl from './btn.pug'
 import * as modalTmpl from './modal.pug'
+import * as modalOkTmpl from './modal-ok.pug'
 import Widget from '../../widget'
 
 export default function createLeadProject(lead_id) {
@@ -55,7 +56,7 @@ export default function createLeadProject(lead_id) {
                         init: function ($modal_body) {
                             $modal_body
                                 .trigger('modal:loaded')
-                                .html('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span><h1>Проект создан</h1>')
+                                .html(modalOkTmpl())
                                 .trigger('modal:centrify')
                                 .append('');
                         },

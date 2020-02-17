@@ -1,6 +1,7 @@
 import * as $ from 'jquery'
 import * as tmpl from './tmpl.pug'
 import Widget from '../../widget'
+import * as modalOkTmpl from './modal-ok.pug'
 
 export default function createLeadFolders(id) {
 
@@ -31,7 +32,7 @@ export default function createLeadFolders(id) {
                     init: function ($modal_body) {
                         $modal_body
                             .trigger('modal:loaded')
-                            .html('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span><h1>Папки созданы</h1>')
+                            .html(modalOkTmpl())
                             .trigger('modal:centrify')
                             .append('');
                     },
