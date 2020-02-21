@@ -1,8 +1,8 @@
-import duplicate from '../components/duplicate'
+import tags from '../components/tags'
 
 export default {
     constriclor() {
-        duplicate()
+        tags()
     },
 
     list() {

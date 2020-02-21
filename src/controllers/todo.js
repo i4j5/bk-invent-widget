@@ -13,8 +13,6 @@ export default {
                 let inx = $text.indexOf('@');
                 let type = $text[inx+1]
 
-                console.log(inx)
-
                 if (inx > -1) {
                     if (type == 'A'|| type == 'А') {
                         $(this).addClass('i4j5-todo_type_a')

@@ -1,6 +1,6 @@
 import * as $ from 'jquery'
 
-export default function duplicate() {
+export default function tags() {
 
     let pathname = document.location.pathname.split('/')
     pathname = pathname[1] + pathname[2]
@@ -13,6 +13,7 @@ export default function duplicate() {
             clearInterval(idSetInterval)
         }
 
+        // Дубль
         $('.pipeline_leads__tag[data-id="35811"], .pipeline_leads__tag[data-id="35509"]')
             .addClass('i4j5-duplicate')
         $('.multisuggest__list-item.js-multisuggest-item[data-id="35811"], .multisuggest__list-item.js-multisuggest-item[data-id="35509"]')
@@ -26,6 +27,17 @@ export default function duplicate() {
                     window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
                 }
             })
-        })        
+        })  
+
+        // Заявка и звлнок с сайта
+        // 26767, 52605
+        $('.pipeline_leads__tag[data-id="26767"], .pipeline_leads__tag[data-id="52605"]')
+            .addClass('i4j5-tag__site')
+        // $('.multisuggest__list-item.js-multisuggest-item[data-id="26767"], .multisuggest__list-item.js-multisuggest-item[data-id="52605"]')
+        //     .addClass('i4j5-tag__site')
+
+        // Авито-магазин 76379
+        $('.pipeline_leads__tag[data-id="76379"]').addClass('i4j5-tag__avito-shop')
+
     }, 500)
 }
