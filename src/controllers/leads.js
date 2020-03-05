@@ -3,6 +3,7 @@ import costPrice from '../components/cost-price'
 import createLeadFolders from '../components/create-lead-folders'
 import createLeadProject from '../components/create-lead-project'
 import widgetsHide from '../components/widgets-hide'
+import spam from '../components/spam'
 
 import unsorted from '../components/unsorted'
 
@@ -18,12 +19,13 @@ export default {
     detail(id) {
         this.constriclor()
 
-        // Подключаем кнопку "Создать клиентскую папку"
+
+        spam(id)
+
         createLeadFolders(id)
 
         createLeadProject(id)
 
-        // Cебестоимость
         costPrice()
 
         unsorted()
