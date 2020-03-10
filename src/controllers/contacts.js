@@ -1,4 +1,5 @@
 import tags from '../components/tags'
+import double from '../components/double'
 
 export default {
     constriclor() {
@@ -11,5 +12,6 @@ export default {
 
     detail(id) {
         this.constriclor()
+        double()
     }
 }

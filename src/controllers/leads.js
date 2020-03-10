@@ -4,7 +4,8 @@ import createLeadFolders from '../components/create-lead-folders'
 import createLeadProject from '../components/create-lead-project'
 import widgetsHide from '../components/widgets-hide'
 import spam from '../components/spam'
-
+import double from '../components/double'
+//import search from '../components/search'
 import unsorted from '../components/unsorted'
 
 export default {
@@ -32,6 +33,8 @@ export default {
 
         widgetsHide()
 
+        double()
+        //search()
 
     }
 }
