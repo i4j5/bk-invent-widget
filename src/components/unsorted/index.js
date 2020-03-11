@@ -3,14 +3,14 @@ import Widget from '../../widget'
 
 export default function unsorted() {
 
-    console.log('unsorted1')
+    //console.log('unsorted1')
 
     if ($('.unsorted-actions-card-wrapper').html()) {
 
         let phone = false
         let widget =  new Widget()
 
-        console.log('unsorted2')
+        //console.log('unsorted2')
 
         $('.card-entity-form input.control-phone__formatted, #contacts_list input.control-phone__formatted').each(function(i, elem) {
             if (elem.value) phone = elem.value
@@ -20,7 +20,7 @@ export default function unsorted() {
 
             //$('body').addClass('page-loading')
 
-            console.log('RUN')
+            //console.log('RUN')
 
             $.post(
                 `//${widget.settings.server}/api/webhook/amocrm/unsorted`,
@@ -28,7 +28,7 @@ export default function unsorted() {
             ).done(function(res) {
                 //$('body').removeClass('page-loading')
 
-                console.log(res)
+                //console.log(res)
 
                 if (res.data.id) {
                     let modal_ok = new widget.Modal({
@@ -45,7 +45,7 @@ export default function unsorted() {
                     })
                 }
             }).always(function() {
-                console.log('GO!')
+                //console.log('GO!')
             })
 
         }

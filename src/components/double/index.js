@@ -3,14 +3,22 @@ import * as btnTmpl from './btn.pug'
 // import * as modalOkTmpl from './modal-ok.pug'
 import Widget from '../../widget'
 import search from '../search'
+import './style.sass'
+
+let data = {
+    system: {}
+}
 
 export default function double(lead_id) {
+
+    let widget = new Widget()
+    data.system = widget.super.system()
 
     $('.control-phone input.control-phone__formatted ').each(function( index ) {
         let $this = $(this)
         let phone = $this.val().replace(/[^\d]/g, '')
 
-        $this.parent().parent().children('.tips').children('.tips__inner').append(btnTmpl({phone: $this.val()}))
+        $this.parent().parent().children('.tips').children('.tips__inner').append(btnTmpl({phone}))
 
         search()
 
@@ -22,13 +30,11 @@ export default function double(lead_id) {
 
 function checkContact(phone, $el) {
     $.ajax({
-        url: `//bkinvent.amocrm.ru/api/v2/contacts?query=${phone}`,
+        url: `//${data.system.domain}/api/v2/contacts?query=${phone}`,
         type: 'get',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
     }).done(function(res) {
-        console.log(res._embedded.items)
         if (res._embedded.items.length >= 2) {
-            //let $parent = $el.parent()
             $el.addClass('i4j5-double')
        }
     })

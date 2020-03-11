@@ -1,6 +1,10 @@
 import * as $ from 'jquery'
+import Widget from '../../widget'
 
 export default function tags() {
+
+    let widget = new Widget()
+    let system = widget.super.system()
 
     let pathname = document.location.pathname.split('/')
     pathname = pathname[1] + pathname[2]
@@ -24,7 +28,7 @@ export default function tags() {
             $('.card-entity-form input.control-phone__formatted, #contacts_list input.control-phone__formatted').each(function(i, elem) {
                 let phone = elem.value
                 if (phone) {
-                    window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+phone, '_blank')
+                    window.open(`//${system.domain}/contacts/list/?&term=${phone}`, '_blank')
                 }
             })
         })  

@@ -5,12 +5,16 @@ import Widget from '../../widget'
 
 let data = {
     contacts: [],
-    id: 0
+    id: 0,
+    system: {}
 }
 
 export default function spam(lead_id) {
 
     data.id = lead_id
+
+    let widget = new Widget()
+    data.system = widget.super.system()
 
     if ($('#i4j5-spam').html()) $('#i4j5-spam').detach()
 
@@ -24,11 +28,10 @@ export default function spam(lead_id) {
     
 }
 
-
 function getContacts(lead_id) {
 
     $.ajax({
-        url: `//bkinvent.amocrm.ru/api/v2/leads?id=${lead_id}`,
+        url: `//${data.system.domain}/api/v2/leads?id=${lead_id}`,
         type: 'get',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
     }).done(function(res) {
@@ -42,7 +45,7 @@ function addTag() {
     if (data.contacts) {
         data.contacts.forEach(function(contact_id) {
             $.ajax({
-                url: `//bkinvent.amocrm.ru/api/v2/contacts`,
+                url: `//${data.system.domain}/api/v2/contacts`,
                 type: 'post',
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 data: {
@@ -61,7 +64,7 @@ function addTag() {
 
 function closeLead() {
     $.ajax({
-        url: `//bkinvent.amocrm.ru/api/v2/leads`,
+        url: `//${data.system.domain}/api/v2/leads`,
         type: 'post',
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         data: {
@@ -74,7 +77,7 @@ function closeLead() {
         }
     }).done(function() {
         $.ajax({
-            url: `//bkinvent.amocrm.ru/api/v2/leads`,
+            url: `//${data.system.domain}/api/v2/leads`,
             type: 'post',
             contentType: 'application/x-www-form-urlencoded; charset=utf-8',
             data: {

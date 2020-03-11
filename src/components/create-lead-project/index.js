@@ -69,7 +69,7 @@ export default function createLeadProject(lead_id) {
                     ajax = true
                 })
                 .always(function() {
-                    console.log($('#i4j5-create-lead-project__form').serialize())
+                    //console.log($('#i4j5-create-lead-project__form').serialize())
                 })
             }
         });

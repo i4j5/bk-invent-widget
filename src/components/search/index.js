@@ -2,6 +2,9 @@ import * as $ from 'jquery'
 import Widget from '../../widget'
 
 export default function search() {
+    let widget = new Widget()
+    let system = widget.super.system()
+
     $('.i4j5-search').off('click')
     $('.i4j5-search').click(function(event) {
         event.stopPropagation()
@@ -11,12 +14,10 @@ export default function search() {
 
         let str = $this.data('search')
         let type = $this.data('type')
-
-        console.log(str, type)
-
+        
         switch (type) {
             case 'contact':
-                window.open('https://bkinvent.amocrm.ru/contacts/list/?&term='+str, '_blank')
+                window.open(`//${system.domain}/contacts/list/?&term=${str}`, '_blank')
                 break;
         
             default:
