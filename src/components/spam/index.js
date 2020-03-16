@@ -36,7 +36,7 @@ function getContacts(lead_id) {
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
     }).done(function(res) {
         data.contacts = res._embedded.items[0].contacts.id
-        addTag()
+        closeLead()
     })
 }
 
@@ -58,8 +58,6 @@ function addTag() {
             })
         })
     }
-
-    closeLead()
 }
 
 function closeLead() {
@@ -88,6 +86,8 @@ function closeLead() {
                 }]
             }
         }).done(function() {
+
+            addTag()
 
             let widget =  new Widget()
 
