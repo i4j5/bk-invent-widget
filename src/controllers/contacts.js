@@ -1,5 +1,6 @@
 import tags from '../components/tags'
 import double from '../components/double'
+import widgetsHide from '../components/widgets-hide'
 
 export default {
     constriclor() {
@@ -13,5 +14,6 @@ export default {
     detail(id) {
         this.constriclor()
         double()
+        widgetsHide()
     }
 }
