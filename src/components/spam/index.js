@@ -50,8 +50,9 @@ function addTag() {
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 data: {
                     update: [{
+                        name: 'СПАМ',
                         id: contact_id,
-                        tags: "Спам",
+                        tags: 'Спам',
                         updated_at: new Date().getTime(),
                     }]
                 }
