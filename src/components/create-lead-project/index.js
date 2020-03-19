@@ -40,6 +40,18 @@ export default function createLeadProject(lead_id) {
 
             if (ajax) {
                 ajax = false
+
+                let data = {
+                    'deal': lead_id,
+                    'project': '',
+                    'task': '',
+                    'section': '',
+                }
+
+                data  = {...data, ...eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')')}
+
+                console.log(data, eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')'))
+
                 modal.destroy()
                 $('body').addClass('page-loading')
 
@@ -47,7 +59,7 @@ export default function createLeadProject(lead_id) {
                     url: `//${widget.settings.server}/api/webhook/amocrm/create-deal-project`,
                     type: 'post',
                     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                    data: $(this).serialize()
+                    data: data
                 }).done(function() {
                     $('body').removeClass('page-loading')
 
