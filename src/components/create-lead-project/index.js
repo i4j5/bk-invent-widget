@@ -50,7 +50,7 @@ export default function createLeadProject(lead_id) {
 
                 data  = {...data, ...eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')')}
 
-                console.log(data, eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')'))
+                //console.log(data, eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')'))
 
                 modal.destroy()
                 $('body').addClass('page-loading')
@@ -60,7 +60,15 @@ export default function createLeadProject(lead_id) {
                     type: 'post',
                     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                     data: data
-                }).done(function() {
+                }).done(function(res) {
+
+                    $.ajax({
+                        url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
+                        type: 'post',
+                        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                        data: res
+                    })
+
                     $('body').removeClass('page-loading')
 
                     let modal_ok = new widget.Modal({
