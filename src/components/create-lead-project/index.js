@@ -62,31 +62,36 @@ export default function createLeadProject(lead_id) {
                     data: data
                 }).done(function(res) {
 
-                    $.ajax({
-                        url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
-                        type: 'post',
-                        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                        data: res
-                    })
+                    console.log(res);
 
-                    $('body').removeClass('page-loading')
+                    setTimeout(function() {
+                        $.ajax({
+                            url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
+                            type: 'post',
+                            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                            data: res
+                        })
+    
+                        $('body').removeClass('page-loading')
+    
+                        let modal_ok = new widget.Modal({
+                            class_name: 'modal-window',
+                            init: function ($modal_body) {
+                                $modal_body
+                                    .trigger('modal:loaded')
+                                    .html(modalOkTmpl())
+                                    .trigger('modal:centrify')
+                                    .append('');
+                            },
+                            destroy: function () {
+                                openModal = true
+                                $(document).off('submit', '#i4j5-create-lead-project__form')
+                            }
+                        })
+    
+                        ajax = true
+                    }, 40000)
 
-                    let modal_ok = new widget.Modal({
-                        class_name: 'modal-window',
-                        init: function ($modal_body) {
-                            $modal_body
-                                .trigger('modal:loaded')
-                                .html(modalOkTmpl())
-                                .trigger('modal:centrify')
-                                .append('');
-                        },
-                        destroy: function () {
-                            openModal = true
-                            $(document).off('submit', '#i4j5-create-lead-project__form')
-                        }
-                    })
-
-                    ajax = true
                 })
                 .always(function() {
                     //console.log($('#i4j5-create-lead-project__form').serialize())
