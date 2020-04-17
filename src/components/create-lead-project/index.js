@@ -63,6 +63,10 @@ export default function createLeadProject(lead_id) {
                     data: data
                 }).done(function(res) {
 
+                    let updateTime = 1000
+
+                    if (res.type == 'task') updateTime = 300
+
                     //$('body').removeClass('page-loading')
                     let modal_synchronization = new widget.Modal({
                         class_name: 'modal-window',
@@ -123,11 +127,11 @@ export default function createLeadProject(lead_id) {
                                         })
 
                                         $('#i4j5-create-lead-project__messages').html('Копирование проекта успешно завершено')
-                                        
+
                                         $btnOK.css('display', 'block')
                                     }
 
-                                }, 100000 / 100);
+                                }, updateTime);
                             })
 
                             $modal_body
@@ -141,36 +145,6 @@ export default function createLeadProject(lead_id) {
                             $(document).off('submit', '#i4j5-create-lead-project__form')
                         }
                     })
-                    
-                    // setTimeout(function() {
-                    //     $.ajax({
-                    //         url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
-                    //         type: 'post',
-                    //         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                    //         data: res
-                    //     })
-
-                    //     modal_synchronization.destroy()
-
-                    //     $('body').removeClass('page-loading')
-    
-                    //     let modal_ok = new widget.Modal({
-                    //         class_name: 'modal-window',
-                    //         init: function ($modal_body) {
-                    //             $modal_body
-                    //                 .trigger('modal:loaded')
-                    //                 .html(modalOkTmpl())
-                    //                 .trigger('modal:centrify')
-                    //                 .append('')
-                    //         },
-                    //         destroy: function () {
-                    //             openModal = true
-                    //             $(document).off('submit', '#i4j5-create-lead-project__form')
-                    //         }
-                    //     })
-    
-                    //     ajax = true
-                    // }, 60000 / 100)
 
                 })
                 .always(function() {
