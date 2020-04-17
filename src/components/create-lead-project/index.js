@@ -2,6 +2,7 @@ import * as $ from 'jquery'
 import * as btnTmpl from './btn.pug'
 import * as modalTmpl from './modal.pug'
 import * as modalOkTmpl from './modal-ok.pug'
+import * as modalSynchronizationTmpl from './modal-synchronization.pug'
 import Widget from '../../widget'
 
 export default function createLeadProject(lead_id) {
@@ -62,35 +63,114 @@ export default function createLeadProject(lead_id) {
                     data: data
                 }).done(function(res) {
 
-                    console.log(res);
+                    //$('body').removeClass('page-loading')
+                    let modal_synchronization = new widget.Modal({
+                        class_name: 'modal-window',
+                        init_animation: true,
+                        init: function ($modal_body) {
 
-                    setTimeout(function() {
-                        $.ajax({
-                            url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
-                            type: 'post',
-                            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                            data: res
-                        })
+                            $modal_body.on('modal:centrify', function() {
+
+                                let $this = $(this)
+
+                                $this.parent().css('pointer-events', 'none')
+                                $this.css('pointer-events', 'all')
+
+                                let $filler = $('#i4j5-create-lead-project__synchronization-filler')
+                                let $text = $('#i4j5-create-lead-project__synchronization-text')
+                                let $bar = $('#i4j5-create-lead-project__synchronization-bar')
+                                let $btnOK = $('#i4j5-create-lead-project__btn-ok') 
+
+                                $btnOK.on('click', function() {
+                                    $('body').removeClass('page-loading')
     
-                        $('body').removeClass('page-loading')
+                                    let modal_ok = new widget.Modal({
+                                        class_name: 'modal-window',
+                                        init: function ($modal_body) {
+                                            $modal_body
+                                                .trigger('modal:loaded')
+                                                .html(modalOkTmpl())
+                                                .trigger('modal:centrify')
+                                                .append('')
+                                        },
+                                        destroy: function () {
+                                            openModal = true
+                                            $(document).off('submit', '#i4j5-create-lead-project__form')
+                                        }
+                                    })
+
+                                    setTimeout(function() {
+                                        modal_ok.destroy()
+                                    }, 700)
+                                })
+
+                                let i = 0
+                                let timerId = setInterval(function(){
+                                    ++i
+
+                                    if (i <= 100) {
+                                        $filler.css('width', i+'%')
+                                        $bar.css('width', i+'%')
+                                        $text.html(i+'%')
+                                    } else{
+                                        clearInterval(timerId)
+
+                                        $.ajax({
+                                            url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
+                                            type: 'post',
+                                            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                                            data: res
+                                        })
+
+                                        $('#i4j5-create-lead-project__messages').html('Копирование проекта успешно завершено')
+                                        
+                                        $btnOK.css('display', 'block')
+                                    }
+
+                                }, 100000 / 100);
+                            })
+
+                            $modal_body
+                                .trigger('modal:loaded')
+                                .html(modalSynchronizationTmpl())
+                                .trigger('modal:centrify')
+                                .append('')
+                        },
+                        destroy: function () {
+                            openModal = true
+                            $(document).off('submit', '#i4j5-create-lead-project__form')
+                        }
+                    })
+                    
+                    // setTimeout(function() {
+                    //     $.ajax({
+                    //         url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
+                    //         type: 'post',
+                    //         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                    //         data: res
+                    //     })
+
+                    //     modal_synchronization.destroy()
+
+                    //     $('body').removeClass('page-loading')
     
-                        let modal_ok = new widget.Modal({
-                            class_name: 'modal-window',
-                            init: function ($modal_body) {
-                                $modal_body
-                                    .trigger('modal:loaded')
-                                    .html(modalOkTmpl())
-                                    .trigger('modal:centrify')
-                                    .append('');
-                            },
-                            destroy: function () {
-                                openModal = true
-                                $(document).off('submit', '#i4j5-create-lead-project__form')
-                            }
-                        })
+                    //     let modal_ok = new widget.Modal({
+                    //         class_name: 'modal-window',
+                    //         init: function ($modal_body) {
+                    //             $modal_body
+                    //                 .trigger('modal:loaded')
+                    //                 .html(modalOkTmpl())
+                    //                 .trigger('modal:centrify')
+                    //                 .append('')
+                    //         },
+                    //         destroy: function () {
+                    //             openModal = true
+                    //             $(document).off('submit', '#i4j5-create-lead-project__form')
+                    //         }
+                    //     })
     
-                        ajax = true
-                    }, 40000)
+                    //     ajax = true
+                    // }, 60000 / 100)
 
                 })
                 .always(function() {
