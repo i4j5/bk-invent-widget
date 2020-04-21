@@ -53,6 +53,14 @@ function addTag() {
                         name: 'СПАМ',
                         id: contact_id,
                         tags: 'Спам',
+                        custom_fields: [
+                            {
+                                id: '287297',
+                                values: [{
+                                    value: '552569'
+                                }]
+                            }
+                        ],
                         updated_at: new Date().getTime(),
                     }]
                 }
