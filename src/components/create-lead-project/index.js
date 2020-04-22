@@ -65,7 +65,7 @@ export default function createLeadProject(lead_id) {
 
                     let updateTime = 1000
 
-                    if (res.type == 'task') updateTime = 300
+                    if (res.type == 'task') updateTime = 150
 
                     //$('body').removeClass('page-loading')
                     let modal_synchronization = new widget.Modal({
