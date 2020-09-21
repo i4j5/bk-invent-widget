@@ -1,5 +1,5 @@
 import tags from '../components/tags'
-import costPrice from '../components/cost-price'
+import cfieldsPrice from '../components/cfields-price'
 import createLeadFolders from '../components/create-lead-folders'
 import createLeadProject from '../components/create-lead-project'
 import widgetsHide from '../components/widgets-hide'
@@ -27,7 +27,7 @@ export default {
 
         createLeadProject(id)
 
-        costPrice()
+        cfieldsPrice()
 
         unsorted()
 
