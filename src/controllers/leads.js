@@ -35,6 +35,12 @@ export default {
 
         double()
         //search()
+        $('#person_n').unbind('keyup')
+        $('#person_n').on('keyup', function(e) {
+            var $this = $(this);
+        
+            $this.val($this.val().toUpperCase());
+        });
 
     }
 }
