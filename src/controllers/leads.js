@@ -2,6 +2,7 @@ import tags from '../components/tags'
 import cfieldsPrice from '../components/cfields-price'
 import createLeadFolders from '../components/create-lead-folders'
 import createLeadProject from '../components/create-lead-project'
+import createGoogleCalendarEvent from '../components/create-google-calendar-event'
 import widgetsHide from '../components/widgets-hide'
 import spam from '../components/spam'
 import double from '../components/double'
@@ -20,12 +21,13 @@ export default {
     detail(id) {
         this.constriclor()
 
-
         spam(id)
 
         createLeadFolders(id)
 
         createLeadProject(id)
+
+        createGoogleCalendarEvent(id)
 
         cfieldsPrice()
 
@@ -37,8 +39,7 @@ export default {
         //search()
         $('#person_n').unbind('keyup')
         $('#person_n').on('keyup', function(e) {
-            var $this = $(this);
-        
+            let $this = $(this);
             $this.val($this.val().toUpperCase());
         });
 

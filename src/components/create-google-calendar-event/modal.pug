@@ -1,0 +1,64 @@
+.modal-body__inner.modal-body__inner__success    
+    form#i4j5-create-google-calendar-event__form
+
+        span.modal-body__close
+            span.icon.icon-modal-close
+
+        .widget_settings_block__item_field(style="margin-bottom: 10px")
+            .widget_settings_block__title_field(style="margin-bottom: 5px") Заголовок:
+            .widget_settings_block__input
+                input(name='summary' value=summary style="width:100%").text-input#i4j5-create-google-calendar-event__summary
+
+        .widget_settings_block__item_field(style="margin-bottom: 10px")
+            .widget_settings_block__title_field(style="margin-bottom: 5px") Аадрес: 
+            .widget_settings_block__input
+                input(name='location' value=location style="width:100%").text-input#i4j5-create-google-calendar-event__location
+
+
+        .widget_settings_block__item_field(style="margin-bottom: 10px")
+            .widget_settings_block__title_field(style="margin-bottom: 5px") Интервал:
+            .widget_settings_block__title_field(style="margin-bottom: 5px; display: flex;")
+                span.date_field_wrapper.js-control-date-time
+                    input(type='text' maxlength='16' name='start' value=start placeholder='' from='calendar').date_field.text-input.linked-form__cf.military.date_field_with-time#i4j5-create-google-calendar-event__start
+                    .date_field_wrapper--calendar
+                        svg.svg-card-calendar-dims
+                            use(xlink:href='#card-calendar')
+                span(style="margin: 0px 10px;")
+                span.date_field_wrapper.js-control-date-time
+                    input(type='text' maxlength='16' name='end' value=end placeholder='' from='calendar').text-input.date_field.linked-form__cf.military.date_field_with-time#i4j5-create-google-calendar-event__end
+                    .date_field_wrapper--calendar
+                        svg.svg-card-calendar-dims
+                            use(xlink:href='#card-calendar')
+
+        //- .widget_settings_block__item_field(style="margin-bottom: 10px")
+        //-     .widget_settings_block__title_field(style="margin-bottom: 5px") Интервал:
+        //-     .widget_settings_block__input
+        //-         input(name='start' value=start).text-input#i4j5-create-google-calendar-event__start
+        //-         input(name='end' value=end style="margin-left: 20px;").text-input#i4j5-create-google-calendar-event__end
+        
+        .widget_settings_block__item_field(style="margin-bottom: 10px")
+            .widget_settings_block__title_field(style='margin-bottom: 5px') Ответственный за выезд: 
+            .control--select.linked-form__select
+                ul.custom-scroll.control--select--list
+                    li.control--select--list--item.control--select--list--item-selected(data-value='', data-color='')
+                        span.control--select--list--item-inner(title='Выбрать') Выбрать
+
+                    li.control--select--list--item(data-value='sde@bkinvent.net')
+                        span.control--select--list--item-inner(title='Дмитрий Снисаренко') Дмитрий Снисаренко
+                    li.control--select--list--item(data-value='sal@bkinvent.net')
+                        span.control--select--list--item-inner(title='Дмитрий Снисаренко') Александр Сажин
+
+                button.control--select--button(tabindex='', type='button', data-value='')
+                    span.control--select--button-inner Выбрать
+                input.control--select--input(type='hidden', id='i4j5-create-google-calendar-event__email', name='email', value='', data-prev-value='')
+        
+        .widget_settings_block__item_field(style="margin-bottom: 10px")
+            .widget_settings_block__title_field(style="margin-bottom: 5px") Описание:
+            .widget_settings_block__input
+                textarea(name='description' id='i4j5-create-google-calendar-event__description').text-input.text-input-textarea.edit-integration-modal__textarea=description
+        
+        div(style='margin-top: 15px')
+            input(type='hidden', name='deal_id', value=lead_id, id="i4j5-create-lead-project__lead_id")
+            button.button-input.button-input_blue(type='submit')
+                span.button-input-inner
+                    span.button-input-inner__text Создать
