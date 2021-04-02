@@ -22,14 +22,16 @@ export default {
         this.constriclor()
 
         spam(id)
+        
+        cfieldsPrice(id)
 
         createLeadFolders(id)
 
         createLeadProject(id)
 
-        createGoogleCalendarEvent(id)
+        // createGoogleCalendarEvent(id)
 
-        cfieldsPrice()
+        
 
         unsorted()
 
