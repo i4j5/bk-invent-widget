@@ -83,9 +83,12 @@ export default function cfieldsPrice(lead_id) {
 
     if ($allCostPrice.length === 2 && $allBudget.length === 2 && $fieldBudget.length === 1 && $fieldCostPrice.length === 1) {
         $fieldBudget.prop('disabled', true)
+        $fieldBudget.parent().parent().append('<span class="i4j5-debt" />') 
         $fieldCostPrice.prop('disabled', true)
 
         $fieldCostPrice.parent().parent().parent().before('<div class="i4j5-br" />')
+
+        debt()
     
         $allCostPrice.on('input', function () {
             let sum = 0
@@ -105,10 +108,9 @@ export default function cfieldsPrice(lead_id) {
                 sum = sum + parseInt(+val)
             })
             $fieldBudget.val(sum).trigger('input')
+            debt()
         })
     }
-
-    // TODO: Событие удаления птатежа
 
 
     if ($('#i4j5-create-payment').html()) $('#i4j5-create-payment').detach()
@@ -185,6 +187,20 @@ export default function cfieldsPrice(lead_id) {
     
 }
 
+function debt() {
+    let budget = $('#lead_card_budget').val()
+    let paid = $('.i4j5-cost-price[data-id="506505"] input.js-control-pretty-price').val()
+    
+    budget = budget.replace(/\D/g, '').trim()
+    paid = paid.replace(/\D/g, '').trim()
+    // paid = paid.replace( /\s/g, '')
+
+   let debt = budget - paid
+   debt = parseInt(+debt).toLocaleString('ru-RU')
+
+    $('.i4j5-debt').html(debt)
+}
+
 
 function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
 
@@ -217,7 +233,7 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
                 </div>
 
                 <div class="linked-form__field__value"> 
-                    <span>${item.sum} ₽ (${item.type})</span>
+                    <span>${parseInt(+item.sum).toLocaleString('ru-RU')} ₽ (${item.type})</span>
                     <span data-id="${item.id}" class="i4j5-payments__delete list-multiple-actions__item__icon icon icon-delete-trash"></span>
                 </div>
             </div>`;
@@ -238,7 +254,7 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
 
 
         if (sum == $fieldPaid.val()) {
-
+            debt()
         } else {
             // Обновить поле 
             $.ajax({
@@ -261,6 +277,8 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
                 }
             }).done(function(res){
                 $fieldPaid.val(sum).trigger('input')
+
+                debt()
             })
         }
 
