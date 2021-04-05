@@ -46,17 +46,31 @@
     &load
         margin: 10px auto
     &payments
+        margin-top: 8px
         &__label
             padding-top: 5px !important
         &__item
-            margin-top: 8px
+            margin-bottom: 8px
         &__description
-            font-size: 0.9em
+            font-size: 12px
+            padding-top: 4px
+            line-height: 1.15em
         &__delete
             display: none
             cursor: pointer
+            left: -14px
+            top: 3px 
+            position: absolute
             &_hover
                 display: inline-block
+        &__type
+            color: #848c90
+            font-size: 12px
+    &paid
+        color: #529a4d !important
+        input
+            color: #529a4d !important
+
     &debt
         color: #f97b7b
         padding-left: 5px

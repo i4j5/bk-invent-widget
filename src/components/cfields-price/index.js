@@ -57,6 +57,7 @@ export default function cfieldsPrice(lead_id) {
     if ($fieldPaid.length === 1) { 
         $fieldPaid.prop('disabled', true)
         $fieldPaid.parent().parent().parent().before('<div class="i4j5-br" />')
+        $fieldPaid.parent().parent().addClass('i4j5-paid')
         $fieldPaid.parent().parent().parent().after('<div class="i4j5-payments"></div>')
 
         // i4j5-payments__delete
@@ -223,17 +224,35 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
         $.each(items, function (index, item) {               
             sum = sum + parseInt(item.sum)
 
+            let date = new Date(item.date)
+            date = date.toLocaleString('ru', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+            })
+
+            let description = ''
+            if (item.description) {
+                description = `<div class="i4j5-payments__description">(${item.description})</div>`
+            }
+
+
             let item_html = `<div class="i4j5-payments__item linked-form__field linked-form__field-numeric">
                 <div class="linked-form__field__label i4j5-payments__label">
                     <div>
-                        ${item.date}
-                        <!--<br>
-                        <span class="i4j5-payments__description">${item.description}</span>-->
+                        <svg class="svg-card-calendar-dims">
+                            <use xlink:href="#card-calendar" style="fill: #909090;"></use>
+                        </svg>&thinsp;
+                        ${date}
+                        
+                        ${description}
                     </div>
                 </div>
 
                 <div class="linked-form__field__value"> 
-                    <span>${parseInt(+item.sum).toLocaleString('ru-RU')} ₽ (${item.type})</span>
+                    <span>${parseInt(+item.sum).toLocaleString('ru-RU')} ₽ <span class="i4j5-payments__type">(${item.type})</span> </span>
                     <span data-id="${item.id}" class="i4j5-payments__delete list-multiple-actions__item__icon icon icon-delete-trash"></span>
                 </div>
             </div>`;
