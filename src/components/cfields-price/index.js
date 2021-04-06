@@ -98,6 +98,9 @@ export default function cfieldsPrice(lead_id) {
                 val = val.replace(/\D/g, '').trim()
                 sum = sum + parseInt(+val)
             })
+            if (sum == 0) {
+                sum = ''
+            }
             $fieldCostPrice.val(sum).trigger('input')
         })
     
@@ -108,6 +111,9 @@ export default function cfieldsPrice(lead_id) {
                 val = val.replace(/\D/g, '').trim()
                 sum = sum + parseInt(+val)
             })
+            if (sum == 0) {
+                sum = ''
+            }
             $fieldBudget.val(sum).trigger('input')
             debt()
         })
@@ -351,6 +357,10 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
             $(this).find('.i4j5-payments__delete').removeClass('i4j5-payments__delete_hover')
         })
 
+        
+        if (sum == 0) {
+            sum = ''
+        }
 
         if (sum == $fieldPaid.val()) {
             debt()
