@@ -146,6 +146,73 @@ export default function cfieldsPrice(lead_id) {
 
             if (ajax) {
 
+                let $sum = $('#i4j5-create-payment__sum')
+                let $type = $('#i4j5-create-payment__type')
+                let $date = $('#i4j5-create-payment__date')
+                
+                let validation = true
+                $sum.removeClass('i4j5-input-error')
+                $type.parent().children('.control--select--button').removeClass('i4j5-input-error')
+                $date.removeClass('i4j5-input-error')
+        
+
+                if (!$sum.val()) {
+                    validation = false
+                    $sum.addClass('i4j5-input-error')
+                } else {
+                    let sum = parseInt($sum.val())
+
+                    if (!sum) {
+                        validation = false
+                        $sum.addClass('i4j5-input-error')
+                    } else if (isNaN(sum)) {
+                        validation = false
+                        $sum.addClass('i4j5-input-error')
+                    } else {
+                        $sum.val(sum)
+                    }
+                }
+
+
+                if (!$type.val()) {
+                    validation = false
+                    $type.parent().children('.control--select--button').addClass('i4j5-input-error')
+                }
+                    
+
+                if (!$date.val()) {
+                    validation = false
+                    $date.addClass('i4j5-input-error')
+                } else {
+                    //let date = new Date($date.val())
+
+                    // if (date.toDateString() == 'Invalid Date') {
+                    //     validation = false
+                    //     $date.addClass('i4j5-input-error')
+                    // } else {
+                       
+                        // let day  = date.getDate()
+                        // day = day < 10 ? '0' + day : day
+
+                        // let month = date.getMonth() + 1
+                        // month = month < 10 ? '0' + month : month
+
+                        // let year = date.getFullYear()
+
+                        // let hours =  date.getHours()
+                        // hours = hours < 10 ? '0' + hours : hours
+
+                        // let minutes =  date.getMinutes()
+                        // minutes = minutes < 10 ? '0' + minutes : minutes
+
+                        // console.log(date,`${day}.${month}.${year} ${hours}:${minutes}` )
+
+                        // $date.val( `${day}.${month}.${year} ${hours}:${minutes}` )
+                    // }
+                }
+
+
+
                 let data = {
                     'deal_id': lead_id,
                     'type': $('#i4j5-create-payment__type').val(),
@@ -154,34 +221,40 @@ export default function cfieldsPrice(lead_id) {
                     'date': $('#i4j5-create-payment__date').val(),
                 }
 
-                modal.destroy()
-                $('body').addClass('page-loading');
+                if (validation) {
+                    modal.destroy()
+                    $('body').addClass('page-loading');
 
-                ajax = false
+                    ajax = false
 
-                $.post('https://bkinvent.space/api/payment', data).done(function(res) {
-                    $('body').removeClass('page-loading')
+                    $.post(`//${domen_api}/api/payment`, data).done(function(res) {
+                        $('body').removeClass('page-loading')
 
 
-                    if (res.id) {
-                        loadingPayments($fieldPaid, system.domain, domen_api, lead_id)
-                    }
-                    
-                    let modal_ok = new widget.Modal({
-                        class_name: 'modal-window',
-                        init: function ($modal_body) {
-                            $modal_body
-                                .trigger('modal:loaded')
-                                .html(modalOkTmpl())
-                                .trigger('modal:centrify')
-                                .append('');
-                        },
-                        destroy: function () {
+                        if (res.id) {
+                            loadingPayments($fieldPaid, system.domain, domen_api, lead_id)
                         }
+                        
+                        let modal_ok = new widget.Modal({
+                            class_name: 'modal-window',
+                            init: function ($modal_body) {
+                                $modal_body
+                                    .trigger('modal:loaded')
+                                    .html(modalOkTmpl())
+                                    .trigger('modal:centrify')
+                                    .append('');
+                            },
+                            destroy: function () {
+                            }
+                        })
+
+                        setTimeout(function() {
+                            modal_ok.destroy()
+                        }, 700)
+        
+                        ajax = true
                     })
-    
-                    ajax = true
-                })
+                }
             }
         });
     })
@@ -194,14 +267,12 @@ function debt() {
     
     budget = budget.replace(/\D/g, '').trim()
     paid = paid.replace(/\D/g, '').trim()
-    // paid = paid.replace( /\s/g, '')
 
    let debt = budget - paid
    debt = parseInt(+debt).toLocaleString('ru-RU')
 
     $('.i4j5-debt').html(debt)
 }
-
 
 function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
 
@@ -218,13 +289,20 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
 
         let items = JSON.parse(res)
 
-        //let $payments = $('.i4j5-payments')
         $payments.html('')
 
         $.each(items, function (index, item) {               
             sum = sum + parseInt(item.sum)
 
-            let date = new Date(item.date)
+
+            let date = item.date
+            let day = date.substring(8,10)
+            let month = date.substring(5,7)
+            let year = date.substring(0,4)
+            let hours = date.substring(11,13)
+            let minutes = date.substring(14,16)
+
+            date = new Date(`${year}-${month}-${day} ${hours}:${minutes}`)
             date = date.toLocaleString('ru', {
                 year: 'numeric',
                 month: 'long',
@@ -232,6 +310,8 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
                 hour: 'numeric',
                 minute: 'numeric',
             })
+
+            console.log(item.date, `${year}-${month}-${day} ${hours}:${minutes}`)
 
             let description = ''
             if (item.description) {

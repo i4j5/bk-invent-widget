@@ -4,20 +4,21 @@
         span.modal-body__close
             span.icon.icon-modal-close
 
-        .widget_settings_block__item_field(style="margin-bottom: 10px")
-            .widget_settings_block__title_field(style="margin-bottom: 5px") Сумма:
-            .widget_settings_block__input
-                input(name='location').text-input#i4j5-create-payment__sum
+        div(style="display: flex; justify-content: space-between;")
+            .widget_settings_block__item_field(style="margin-bottom: 10px")
+                .widget_settings_block__title_field(style="margin-bottom: 5px") Сумма:
+                .widget_settings_block__input
+                    input(autocomplete="off").text-input#i4j5-create-payment__sum
 
 
-        .widget_settings_block__item_field(style="margin-bottom: 10px")
-            .widget_settings_block__title_field(style="margin-bottom: 5px") Дата:
-            .widget_settings_block__title_field(style="margin-bottom: 5px;")
-                span.date_field_wrapper.js-control-date-time
-                    input(type='text' maxlength='16' name='date' placeholder='' from='calendar').date_field.text-input.linked-form__cf.military.date_field_with-time#i4j5-create-payment__date
-                    .date_field_wrapper--calendar
-                        svg.svg-card-calendar-dims
-                            use(xlink:href='#card-calendar')
+            .widget_settings_block__item_field(style="margin-bottom: 10px")
+                .widget_settings_block__title_field(style="margin-bottom: 5px") Дата:
+                .widget_settings_block__title_field(style="margin-bottom: 5px;")
+                    span.date_field_wrapper.js-control-date-time
+                        input(type='text' autocomplete="off" maxlength='16' placeholder='' from='calendar').date_field.text-input.linked-form__cf.military.date_field_with-time#i4j5-create-payment__date
+                        .date_field_wrapper--calendar
+                            svg.svg-card-calendar-dims
+                                use(xlink:href='#card-calendar')
 
 
         
