@@ -315,9 +315,9 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
                 day: 'numeric',
                 hour: 'numeric',
                 minute: 'numeric',
-            })
+            }).replace('г.,', 'в ')
 
-            console.log(item.date, `${year}-${month}-${day} ${hours}:${minutes}`)
+            // console.log(item.date, `${year}-${month}-${day} ${hours}:${minutes}`)
 
             let description = ''
             if (item.description) {
