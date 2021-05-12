@@ -20,7 +20,8 @@ export default function createLeadFolders(id) {
             $('body').addClass('page-loading');
             ajax = false
             $.post(
-                `//${widget.settings.server}/api/webhook/amocrm/create-deal-folders`, 
+                // `//${widget.settings.server}/api/webhook/amocrm/create-deal-folders`, 
+                'https://bkinvent.space/api/google-drive/create-project-folder',
                 {
                     id: id
                 }
