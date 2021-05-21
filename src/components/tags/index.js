@@ -26,7 +26,7 @@ export default function tags() {
         $('.i4j5-duplicate-btn').unbind('click')
         $('.i4j5-duplicate-btn').click(() => {
             $('.card-entity-form input.control-phone__formatted, #contacts_list input.control-phone__formatted').each(function(i, elem) {
-                let phone = elem.value
+                let phone = elem.value.replace(/[^\d]/g, '')
                 if (phone) {
                     window.open(`//${system.domain}/contacts/list/?&term=${phone}`, '_blank')
                 }

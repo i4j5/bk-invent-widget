@@ -14,7 +14,7 @@ export default function double(lead_id) {
     let widget = new Widget()
     data.system = widget.super.system()
 
-    $('.control-phone input.control-phone__formatted ').each(function( index ) {
+    $('.control-phone input.control-phone__formatted').each(function( index ) {
         let $this = $(this)
         let phone = $this.val().replace(/[^\d]/g, '')
 
