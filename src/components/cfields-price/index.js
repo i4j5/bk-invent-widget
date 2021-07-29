@@ -52,6 +52,8 @@ export default function cfieldsPrice(lead_id) {
     const $allCostPrice = $('.i4j5-cost-price[data-id="329025"] input.js-control-pretty-price, .i4j5-cost-price[data-id="329027"] input.js-control-pretty-price')
     const $allBudget = $('.i4j5-cost-price[data-id="329033"] input.js-control-pretty-price, .i4j5-cost-price[data-id="329031"] input.js-control-pretty-price')
 
+    $('[name="CFV[518605]"]').prop('disabled', true)
+
     const $fieldPaid = $('.i4j5-cost-price[data-id="506505"] input.js-control-pretty-price')
     
     if ($fieldPaid.length === 1) { 
@@ -366,6 +368,12 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
             debt()
         } else {
             // Обновить поле 
+
+            let fully_paid_for = 0;
+            if (sum == $('#lead_card_budget').val().replace(/\D/g, '').trim()) {
+                fully_paid_for = 1 
+            }
+
             $.ajax({
                 url: `//${domain}/api/v2/leads`,
                 type: 'post',
@@ -378,6 +386,12 @@ function loadingPayments($fieldPaid, domain, domen_api, lead_id) {
                                 id: '506505',
                                 values: [{
                                     value: sum
+                                }]
+                            },
+                            {
+                                id: '518605',
+                                values: [{
+                                    value: fully_paid_for
                                 }]
                             }
                         ],
