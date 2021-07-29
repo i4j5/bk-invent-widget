@@ -21,6 +21,13 @@ export default {
     detail(id) {
         this.constriclor()
 
+        $('#pipeline_2291194_38176489_1709500303').parent().css('display', 'none')
+
+        let leadExchange = $('[value=38176489]').parent()
+        if (leadExchange.hasClass('pipeline-select__dropdown__item')) {
+            leadExchange.css('display', 'none')
+        }
+
         spam(id)
         
         cfieldsPrice(id)
