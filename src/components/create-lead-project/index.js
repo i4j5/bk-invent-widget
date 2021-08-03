@@ -51,13 +51,12 @@ export default function createLeadProject(lead_id) {
 
                 data  = {...data, ...eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')')}
 
-                //console.log(data, eval( '(' + $('#i4j5-create-lead-project__template_id').val() + ')'))
-
                 modal.destroy()
                 $('body').addClass('page-loading')
 
                 $.ajax({
-                    url: `//${widget.settings.server}/api/webhook/amocrm/create-deal-project`,
+                    // url: `//${widget.settings.server}/api/webhook/amocrm/create-deal-project`,
+                    url: 'https://bkinvent.space/api/asana/create-deal-project',
                     type: 'post',
                     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                     data: data
@@ -120,7 +119,8 @@ export default function createLeadProject(lead_id) {
                                         clearInterval(timerId)
 
                                         $.ajax({
-                                            url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
+                                            // url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
+                                            url: 'https://bkinvent.space/api/asana/update-deal-project',
                                             type: 'post',
                                             contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                                             data: res
