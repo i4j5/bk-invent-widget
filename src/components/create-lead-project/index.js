@@ -56,13 +56,13 @@ export default function createLeadProject(lead_id) {
 
                 $.ajax({
                     // url: `//${widget.settings.server}/api/webhook/amocrm/create-deal-project`,
-                    url: 'https://bkinvent.space/api/asana/create-deal-project',
+                    url: 'https://bkinvent.na4u.ru/api/asana/create-project',
                     type: 'post',
                     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                     data: data
                 }).done(function(res) {
 
-                    let updateTime = 1000
+                    let updateTime = 500
 
                     if (res.type == 'task') updateTime = 100
 
@@ -120,7 +120,7 @@ export default function createLeadProject(lead_id) {
 
                                         $.ajax({
                                             // url: `//${widget.settings.server}/api/webhook/amocrm/update-deal-project`,
-                                            url: 'https://bkinvent.space/api/asana/update-deal-project',
+                                            url: 'https://bkinvent.na4u.ru/api/asana/update-project',
                                             type: 'post',
                                             contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                                             data: res

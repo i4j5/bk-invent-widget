@@ -10,7 +10,7 @@ export default function cfieldsPrice(lead_id) {
     let widget = new Widget()
     let system = widget.super.system()
 
-    let domen_api = 'bkinvent.space'
+    let domen_api = 'bkinvent.na4u.ru' 
 
     let arr = [
         329031, 
