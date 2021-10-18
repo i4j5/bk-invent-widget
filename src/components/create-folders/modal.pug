@@ -1,0 +1,37 @@
+.modal-body__inner.modal-body__inner__success    
+    form#i4j5-create-folders__form
+
+        span.modal-body__close
+            span.icon.icon-modal-close
+
+        .widget_settings_block__title_field(title='' style='margin-bottom: 5px') Категория: 
+        .control--select.linked-form__select
+            ul.custom-scroll.control--select--list
+                li.control--select--list--item.control--select--list--item-selected(data-value='', data-color='')
+                    span.control--select--list--item-inner(title='Выбрать') Выбрать
+
+                li.control--select--list--item(data-value='БЕЗ_КАТЕГОРИИ')
+                    span.control--select--list--item-inner(title='БЕЗ_КАТЕГОРИИ') БЕЗ_КАТЕГОРИИ
+                
+                li.control--select--list--item(data-value='ВК')
+                    span.control--select--list--item-inner(title='ВК') ВК
+                
+                li.control--select--list--item(data-value='СМР')
+                    span.control--select--list--item-inner(title='СМР') СМР
+                
+                li.control--select--list--item(data-value='ТГС')
+                    span.control--select--list--item-inner(title='ТГС') ТГС
+                
+                li.control--select--list--item(data-value='ЭЛЕКТРИЧЕСТВО')
+                    span.control--select--list--item-inner(title='ЭЛЕКТРИЧЕСТВО') ЭЛЕКТРИЧЕСТВО
+
+
+            button.control--select--button(tabindex='', type='button', data-value='')
+                span.control--select--button-inner Выбрать
+            input.control--select--input(type='hidden', id='i4j5-create-folders__type', name='type', value='', data-prev-value='')
+        
+        div(style='margin-top: 15px')
+            input(type='hidden', name='id', value=lead_id, id="i4j5-create-folders__lead_id")
+            button.button-input.button-input_blue(type='submit')
+                span.button-input-inner
+                    span.button-input-inner__text Создать
