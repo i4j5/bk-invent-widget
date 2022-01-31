@@ -72,6 +72,8 @@ export default function createLeadProject(lead_id) {
                         init_animation: true,
                         init: function ($modal_body) {
 
+                            $('body').removeClass('page-loading')
+
                             $modal_body.on('modal:centrify', function() {
 
                                 let $this = $(this)
