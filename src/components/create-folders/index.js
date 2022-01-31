@@ -68,6 +68,7 @@ export default function createLeadProject(lead_id) {
                         class_name: 'modal-window',
                         init_animation: true,
                         init: function ($modal_body) {
+                            $('body').removeClass('page-loading')
 
                             $modal_body.on('modal:centrify', function() {
 

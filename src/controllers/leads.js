@@ -1,9 +1,9 @@
 import tags from '../components/tags'
 import cfieldsPrice from '../components/cfields-price'
-import createLeadFolders from '../components/create-lead-folders'
+// import createLeadFolders from '../components/create-lead-folders'
 import createFolders from '../components/create-folders'
 import createLeadProject from '../components/create-lead-project'
-import createGoogleCalendarEvent from '../components/create-google-calendar-event'
+// import createGoogleCalendarEvent from '../components/create-google-calendar-event'
 import widgetsHide from '../components/widgets-hide'
 import spam from '../components/spam'
 import double from '../components/double'
@@ -33,7 +33,7 @@ export default {
         
         cfieldsPrice(id)
 
-        createLeadFolders(id)
+        // createLeadFolders(id)
 
         createFolders(id)
 
