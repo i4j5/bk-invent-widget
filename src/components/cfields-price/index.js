@@ -33,7 +33,6 @@ export default function cfieldsPrice(lead_id) {
             let $parentСostPrice = $costPrice.parent()
             $parentСostPrice.addClass('card-budget linked-form__field-text')
     
-    
             let $controlCostPrice = $(tmpl({
                 'id': id
             }))
@@ -86,7 +85,7 @@ export default function cfieldsPrice(lead_id) {
 
     if ($allCostPrice.length === 2 && $allBudget.length === 2 && $fieldBudget.length === 1 && $fieldCostPrice.length === 1) {
         $fieldBudget.prop('disabled', true)
-        $fieldBudget.parent().parent().append('<span class="i4j5-debt" />') 
+        $fieldBudget.parent().append('<span class="i4j5-debt" />') 
         $fieldCostPrice.prop('disabled', true)
 
         $fieldCostPrice.parent().parent().parent().before('<div class="i4j5-br" />')
