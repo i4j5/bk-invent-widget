@@ -18,7 +18,7 @@ export default function double(lead_id) {
         let $this = $(this)
         let phone = $this.val().replace(/[^\d]/g, '')
 
-        $this.parent().parent().children('.tips').children('.tips__inner').append(btnTmpl({phone}))
+        $this.parent().parent().children('.js-tip-holder').children('.tips').children('.tips__inner').append(btnTmpl({phone}))
 
         search()
 
